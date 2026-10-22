@@ -1,28 +1,24 @@
-# Objective-Rust (`objrust`)
+# Objective-Rust
 
-Objective-Rust is a small source-to-source transpiler that adds class-style syntax to Rust. It translates `.orst` files into ordinary Rust, then can ask `rustc` to compile the generated code.
+I made Objective-Rust because I wanted to try writing Rust with classes. It lets me put class-style declarations in `.orst` files, then translates them into regular Rust. The `objrust` command can also compile and run the result.
 
-## Requirements
+## Give it a try
 
-- Rust toolchain installed with `rustc` and Cargo available on `PATH`.
+You’ll need Rust installed first, including Cargo and `rustc`. If you don’t have them yet, install Rust with [rustup](https://rustup.rs).
 
-## Install
-
-After this crate is published to crates.io:
+Once Objective-Rust is published on crates.io, install it with:
 
 ```powershell
 cargo install objrust-compiler
 ```
 
-Or install the current GitHub version directly:
+Or install the version from GitHub:
 
 ```powershell
 cargo install --git https://github.com/amrhasanain/objrust.git objrust-compiler
 ```
 
-## Quick start
-
-Create `hello.orst`:
+Create a file called `hello.orst`:
 
 ```rust
 class Animal {
@@ -43,61 +39,57 @@ fn main() {
 }
 ```
 
-Compile and run it:
+Run it from the folder where you saved the file:
 
 ```powershell
 objrust hello.orst --run
 ```
 
-By default, this writes an executable named after the input file. The generated Rust source is kept in `objrust-output/` so it can be inspected when needed.
+That builds and runs the program. ObjRust also saves the Rust it generated in `objrust-output/`, so you can open it and see how the class was translated.
 
-## CLI
-
-```text
-objrust <input.orst> [-o <output>] [options]
-```
-
-| Option | Description |
-| --- | --- |
-| `-o`, `--output <file>` | Choose the output file. A `.rs` extension writes Rust source; other extensions build an executable. |
-| `-r`, `--run` | Run the executable after compiling it. |
-| `-O`, `--release` | Compile with optimizations. |
-| `-S`, `--emit-rust` | Transpile only; print Rust to stdout or write it to `-o`. |
-| `-h`, `--help` | Show help. |
-| `-V`, `--version` | Show the version. |
-
-Examples:
+## A few useful commands
 
 ```powershell
-objrust examples/animals.orst --run
-objrust examples/animals.orst --emit-rust --output animals.rs
-objrust examples/animals.orst --output animals.exe
+# Build and run
+objrust hello.orst --run
+
+# Save the generated Rust without compiling it
+objrust hello.orst --emit-rust --output hello.rs
+
+# Build an executable with a specific name
+objrust hello.orst --output hello.exe
 ```
 
-You can also run the CLI from a local checkout without installing it:
+Use `objrust --help` to see all the options. The short version:
+
+- `-o` or `--output` chooses the output file.
+- `-r` or `--run` runs the program after building it.
+- `-O` or `--release` asks `rustc` to optimize the build.
+- `-S` or `--emit-rust` outputs Rust without building an executable.
+
+If you’ve cloned this repository, you can try the larger example directly:
 
 ```powershell
 cargo run -- examples/animals.orst --run
 ```
 
-## Language features
+## What works so far
 
-- `class` declarations are translated to Rust structs and `impl` blocks.
-- `extends` supports the inheritance syntax implemented by the transpiler.
-- `virtual` and `override` generate trait-based dynamic dispatch.
-- Attributes and ordinary Rust items can be used in `.orst` source.
+ObjRust translates `class` declarations into Rust structs and `impl` blocks. The transpiler also supports the `extends`, `virtual`, and `override` syntax shown in [`examples/animals.orst`](examples/animals.orst). Regular Rust code can live in the same file.
 
-See [`examples/animals.orst`](examples/animals.orst) for a fuller example.
+This is an early project, so the syntax and compiler are still evolving. If you try it and hit a problem, please open an issue with a small `.orst` example that reproduces it.
 
-## Using third-party crates
+## One current limitation
 
-The current CLI invokes `rustc` directly to compile the generated Rust. It does not resolve dependencies from a consumer project's `Cargo.toml`. To use external crates, generate Rust with `--emit-rust` and integrate that source into a Cargo project that declares the dependencies. Cargo-based project builds are a possible future improvement.
+When it builds an executable, the CLI calls `rustc` directly. That means it doesn’t read dependencies from your project’s `Cargo.toml`. If your program uses another crate, generate the Rust with `--emit-rust` and use it in a Cargo project that declares the dependency.
+
+You can also use the transpiler from Rust code:
+
+```rust
+let rust_source = objective_rust::transpile("class Animal { pub name: String, }")
+    .expect("valid ObjRust source");
+```
 
 ## License
 
-Licensed under either of:
-
-- Apache License, Version 2.0 ([LICENSE](LICENSE))
-- MIT license ([LICENSE-MIT](LICENSE-MIT))
-
-at your option.
+You can use this project under either the Apache License 2.0 ([LICENSE](LICENSE)) or the MIT license ([LICENSE-MIT](LICENSE-MIT)).

@@ -1,0 +1,13 @@
+class Animal {
+    pub name : String,
+    pub fn new(name : String) -> Self {
+        Self { name }
+    }
+    pub fn speak(&self) {
+        println!("Hello I'm {}",self.name);
+    }
+}
+fn main() {
+    let cat = Animal::new("Meshmesh".to_string());
+    cat.speak();
+}

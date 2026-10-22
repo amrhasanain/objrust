@@ -7,7 +7,7 @@ I made Objective-Rust to experiment with writing Rust using classes. It lets you
 
 ## Install
 
-You’ll need Rust installed, including Cargo and `rustc`. If you don’t have them yet, install Rust with [rustup](https://rustup.rs).
+You’ll need Rust installed, including Cargo and `rustc`. If you don’t have them yet, [![Install Rust](https://img.shields.io/badge/Install-Rust%20via%20rustup-orange?logo=rust&logoColor=white)](https://rustup.rs)
 
 Install ObjRust from crates.io:
 

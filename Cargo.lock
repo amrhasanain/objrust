@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "objective-rust"
+name = "objrust-compiler"
 version = "1.0.0"

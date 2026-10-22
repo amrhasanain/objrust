@@ -1,7 +1,7 @@
 # Cargo.toml — Objective-Rust transpiler package.
 
 [package]
-name = "objective-rust"
+name = "objrust-compiler"
 version = "1.0.0"
 edition = "2021"
 description = "A Rust source-to-source transpiler with class-style syntax"

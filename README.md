@@ -11,13 +11,13 @@ Objective-Rust is a small source-to-source transpiler that adds class-style synt
 After this crate is published to crates.io:
 
 ```powershell
-cargo install objective-rust
+cargo install objrust-compiler
 ```
 
 Or install the current GitHub version directly:
 
 ```powershell
-cargo install --git https://github.com/amrhasanain/objrust.git objective-rust
+cargo install --git https://github.com/amrhasanain/objrust.git objrust-compiler
 ```
 
 ## Quick start

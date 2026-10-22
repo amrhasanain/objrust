@@ -5,6 +5,7 @@ I made Objective-Rust because I wanted to try writing Rust with classes. It lets
 ## Give it a try
 
 You’ll need Rust installed first, including Cargo and `rustc`. If you don’t have them yet, install Rust with [rustup](https://rustup.rs).
+Install the [ObjRust VS Code extension](https://marketplace.visualstudio.com/items?itemName=amrhasanain.objectiverust) for syntax highlighting in `.orst` files.
 
 Once Objective-Rust is published on crates.io, install it with:
 

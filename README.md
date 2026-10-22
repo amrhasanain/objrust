@@ -89,16 +89,6 @@ cargo run -- examples/animals.orst --run
 
 See [`examples/animals.orst`](examples/animals.orst) for a fuller example.
 
-## Library API
-
-The crate also exposes the transpiler as a library:
-
-```rust
-let rust_source = objective_rust::transpile("class Animal { pub name: String, }")?;
-```
-
-`transpile` returns generated Rust source or a diagnostic error.
-
 ## Using third-party crates
 
 The current CLI invokes `rustc` directly to compile the generated Rust. It does not resolve dependencies from a consumer project's `Cargo.toml`. To use external crates, generate Rust with `--emit-rust` and integrate that source into a Cargo project that declares the dependencies. Cargo-based project builds are a possible future improvement.

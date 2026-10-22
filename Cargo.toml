@@ -1,0 +1,21 @@
+# Cargo.toml — project manifest for the Objective-Rust transpiler.
+#
+# The project is split into:
+#   * a library  (`objective_rust`) that holds the lexer, parser and code generator
+#   * a binary   (`objrust`)        that is the command-line front end
+#
+# There are no external dependencies: everything is plain std Rust.
+
+[package]
+name = "objective-rust"
+version = "0.1.0"
+edition = "2021"
+description = "Transpiler that adds `class`, `extends`, `virtual` and `override` to Rust"
+
+[lib]
+name = "objective_rust"
+path = "src/lib.rs"
+
+[[bin]]
+name = "objrust"
+path = "src/main.rs"

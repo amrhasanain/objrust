@@ -1,0 +1,62 @@
+// animals.orst — a complete Objective-Rust example.
+//
+// It shows: classes, fields, constructors, `extends`, `virtual` / `override`,
+// a three-level inheritance chain, attributes on classes, and dynamic
+// dispatch through `Box<dyn AnimalVirtual>`.
+//
+// Try it:
+//   cargo run -- examples/animals.orst -o /tmp/animals.rs
+//   rustc /tmp/animals.rs -o /tmp/animals && /tmp/animals
+
+#[derive(Debug)]
+class Animal {
+    pub name: String,
+    age: u32,
+
+    pub fn new(name: String, age: u32) -> Self {
+        Self { name, age }
+    }
+
+    pub virtual fn speak(&self) {
+        println!("{} makes a sound (age {})", self.name, self.age);
+    }
+}
+
+#[derive(Debug)]
+class Dog extends Animal {
+    breed: String,
+
+    pub fn new(name: String, breed: String) -> Self {
+        Self { super: Animal::new(name, 3), breed }
+    }
+
+    pub override fn speak(&self) {
+        println!("{} the {} says Woof!", self.name, self.breed);
+    }
+}
+
+#[derive(Debug)]
+class Puppy extends Dog {
+    pub fn new(name: String) -> Self {
+        Self { super: Dog::new(name, "Husky".to_string()) }
+    }
+
+    pub override fn speak(&self) {
+        println!("{} says Yip!", self.name);
+    }
+}
+
+// Everything below is ordinary Rust and is copied through unchanged.
+fn main() {
+    let zoo: Vec<Box<dyn AnimalVirtual>> = vec![
+        Box::new(Animal::new("Generic".to_string(), 5)),
+        Box::new(Dog::new("Rex".to_string(), "Labrador".to_string())),
+        Box::new(Puppy::new("Bit".to_string())),
+    ];
+    for animal in &zoo {
+        animal.speak();
+    }
+
+    let p = Puppy::new("Pip".to_string());
+    println!("{} / {:?}", p.name, p);
+}

@@ -1,0 +1,13 @@
+{
+  "iconDefinitions": {
+    "_objrust": {
+      "iconPath": "./objrust.svg"
+    }
+  },
+  "fileExtensions": {
+    "orst": "_objrust"
+  },
+  "languageIds": {
+    "objrust": "_objrust"
+  }
+}

@@ -1,0 +1,11 @@
+# Rust project files are not needed by the VS Code extension.
+.git/**
+.gitignore
+.vscode/**
+Cargo.toml
+Cargo.lock
+src/**
+tests/**
+examples/**
+target/**
+*.exe

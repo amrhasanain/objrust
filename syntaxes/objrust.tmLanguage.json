@@ -1,0 +1,89 @@
+{
+  "scopeName": "source.objrust",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#class-declaration" },
+    { "include": "#inheritance" },
+    { "include": "#objrust-modifiers" },
+    { "include": "#rust-keywords" },
+    { "include": "#macros" },
+    { "include": "#types" },
+    { "include": "#numbers" },
+    { "include": "#functions" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.objrust",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.objrust",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.objrust",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.objrust", "match": "\\\\." }
+          ]
+        },
+        {
+          "name": "string.quoted.single.objrust",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            { "name": "constant.character.escape.objrust", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "class-declaration": {
+      "name": "meta.class.objrust",
+      "match": "\\b(class)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "storage.type.class.objrust" },
+        "2": { "name": "entity.name.type.class.objrust" }
+      }
+    },
+    "inheritance": {
+      "match": "\\b(extends)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "storage.modifier.inheritance.objrust" },
+        "2": { "name": "entity.other.inherited-class.objrust" }
+      }
+    },
+    "objrust-modifiers": {
+      "name": "storage.modifier.objrust",
+      "match": "\\b(virtual|override)\\b"
+    },
+    "rust-keywords": {
+      "name": "keyword.control.rust",
+      "match": "\\b(as|async|await|break|const|continue|crate|dyn|else|enum|extern|false|fn|for|if|impl|in|let|loop|match|mod|move|mut|pub|ref|return|self|Self|static|struct|super|trait|true|type|union|unsafe|use|where|while)\\b"
+    },
+    "macros": {
+      "name": "entity.name.function.macro.rust",
+      "match": "\\b[A-Za-z_][A-Za-z0-9_]*!"
+    },
+    "types": {
+      "name": "support.type.rust",
+      "match": "\\b(bool|char|f32|f64|i8|i16|i32|i64|i128|isize|str|String|u8|u16|u32|u64|u128|usize|Self)\\b"
+    },
+    "numbers": {
+      "name": "constant.numeric.rust",
+      "match": "\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
+    },
+    "functions": {
+      "name": "entity.name.function.rust",
+      "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()"
+    }
+  }
+}

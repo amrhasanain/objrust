@@ -1,0 +1,46 @@
+{
+  "name": "objectiverust",
+  "displayName": "ObjectiveRust Language Support",
+  "description": "Basic syntax highlighting for ObjRust files",
+  "version": "1.1.0",
+  "publisher": "amrhasanain",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amrhasanain/objrust.git"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "objrust",
+        "aliases": [
+          "ObjRust",
+          "objrust"
+        ],
+        "extensions": [
+          ".orst"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "objrust",
+        "scopeName": "source.objrust",
+        "path": "./syntaxes/objrust.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "label": "ObjRust File Icons",
+        "path": "./icons/objrust-icon-theme.json",
+        "id": "objrust-icons"
+      }
+    ]
+  }
+}

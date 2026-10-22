@@ -4,9 +4,7 @@
 // a three-level inheritance chain, attributes on classes, and dynamic
 // dispatch through `Box<dyn AnimalVirtual>`.
 //
-// Try it:
-//   cargo run -- examples/animals.orst -o /tmp/animals.rs
-//   rustc /tmp/animals.rs -o /tmp/animals && /tmp/animals
+
 
 #[derive(Debug)]
 class Animal {

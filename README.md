@@ -7,7 +7,9 @@ I made Objective-Rust to experiment with writing Rust using classes. It lets you
 
 ## Install
 
-You’ll need Rust installed, including Cargo and `rustc`. If you don’t have them yet, [![Install Rust](https://img.shields.io/badge/Install-Rust%20via%20rustup-orange?logo=rust&logoColor=white)](https://rustup.rs)
+You’ll need Rust installed, including Cargo and `rustc`. If you don’t have them yet,
+
+[![Install Rust](https://img.shields.io/badge/Install-Rust%20via%20rustup-orange?logo=rust&logoColor=white)](https://rustup.rs)
 
 Install ObjRust from crates.io:
 
@@ -21,7 +23,9 @@ This installs the `objrust` command. To install directly from the GitHub reposit
 cargo install --git https://github.com/amrhasanain/objrust.git objrust-compiler
 ```
 
-For `.orst` syntax highlighting and file icons in VS Code, install the [ObjRust extension](https://marketplace.visualstudio.com/items?itemName=amrhasanain.objectiverust).
+For `.orst` syntax highlighting and file icons in VS Code,
+
+[![Install ObjRust](https://img.shields.io/badge/Install-ObjRust-blue?logo=visualstudiocode&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=amrhasanain.objectiverust)
 
 ## Try it
 
